@@ -10,12 +10,16 @@ export default function ContactPage() {
       ? {
           title: 'Contact',
           body:
-            'Share your preferred contact channels, such as email, LinkedIn, GitHub issues or a simple contact form.',
+            'You can reach me on X (Twitter) at @Chaifly. This is currently my primary public channel for sharing updates and project notes.',
+          xLabel: 'Visit my X profile',
+          xUrl: 'https://x.com/Chaifly',
         }
       : {
           title: '联系我',
           body:
-            '在这里提供你的主要联系方式，例如邮箱、LinkedIn、GitHub 或一个简单的联系表单。',
+            '目前我主要通过 X 账号 @Chaifly 对外分享更新和项目进展，如果你有合作或交流需求，可以在 X 上私信或 @ 我。',
+          xLabel: '前往我的 X 个人主页',
+          xUrl: 'https://x.com/Chaifly',
         };
 
   return (
@@ -39,6 +43,11 @@ export default function ContactPage() {
 
       <h1>{content.title}</h1>
       <p>{content.body}</p>
+      <p>
+        <a href={content.xUrl} target="_blank" rel="noreferrer">
+          {content.xLabel}
+        </a>
+      </p>
     </section>
   );
 }

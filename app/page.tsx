@@ -11,7 +11,6 @@ export default function HomePage() {
           heroTitle: 'I am Chen, a AI-empowered developer',
           heroBody:
             'This is my personal portfolio where I share my work in web development, system design, and product experiments.',
-          primaryCta: 'Visit my main product: Calculate Central',
           projectsHeading: 'Featured Projects',
           projects: [
             {
@@ -47,7 +46,6 @@ export default function HomePage() {
           heroTitle: '我是 Chen，一位AI开发者',
           heroBody:
             '这是我的个人作品集，我会在这里持续分享在 Web 开发、系统设计以及产品实践方面的经验和项目。',
-          primaryCta: '访问我的主要作品：Calculate Central',
           projectsHeading: '精选项目',
           projects: [
             {
@@ -103,14 +101,6 @@ export default function HomePage() {
         <div className="hero-content">
           <h1>{content.heroTitle}</h1>
           <p>{content.heroBody}</p>
-          <a
-            className="hero-button"
-            href="https://calccentral.net/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {content.primaryCta}
-          </a>
         </div>
       </section>
 
