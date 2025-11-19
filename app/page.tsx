@@ -40,6 +40,15 @@ export default function HomePage() {
               externalHref: 'https://www.uselessweb.net/',
               externalLabel: 'Visit the experiment',
             },
+            {
+              id: 'epitaph',
+              name: 'Digital Epitaphs',
+              description:
+                'A digital memorial project that collects epitaphs and life stories to build an online space for remembrance and reflection.',
+              internalHref: '/projects/epitaph',
+              externalHref: 'https://epitaph.world/',
+              externalLabel: 'Visit the memorial',
+            },
           ],
         }
       : {
@@ -74,6 +83,15 @@ export default function HomePage() {
               internalHref: '/projects/UselessWeb',
               externalHref: 'https://www.uselessweb.net/',
               externalLabel: '访问这个小实验',
+            },
+            {
+              id: 'epitaph',
+              name: 'Digital Epitaphs',
+              description:
+                '一个收集世界各地墓志铭及其背后故事的数字纪念项目，用数字空间承载缅怀与思考。',
+              internalHref: '/projects/epitaph',
+              externalHref: 'https://epitaph.world/',
+              externalLabel: '访问线上站点',
             },
           ],
         };

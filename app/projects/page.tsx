@@ -21,6 +21,12 @@ const projectsEn = [
     summary:
       "A 'don't click' style collection of useless websites that also accepts user-submitted links.",
   },
+  {
+    slug: 'epitaph',
+    title: 'Digital Epitaphs',
+    summary:
+      'A digital memorial project that curates epitaphs and the stories behind them, exploring the meaning and value of life.',
+  },
 ];
 
 const projectsZh = [
@@ -41,6 +47,12 @@ const projectsZh = [
     title: 'Useless Web',
     summary:
       '一个以「不要点」形式呈现的无用网站集合，同时支持用户提交新的无用网址。',
+  },
+  {
+    slug: 'epitaph',
+    title: 'Digital Epitaphs',
+    summary:
+      '一个收集世界各地墓志铭及其背后故事的数字纪念项目，尝试一起思考生命的意义与价值。',
   },
 ];
 

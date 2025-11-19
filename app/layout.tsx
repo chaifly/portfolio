@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <a href="/projects/calculate-central">Calculate Central</a>
                 <a href="/projects/PuzzleZone">PuzzleZone</a>
                 <a href="/projects/UselessWeb">Useless Web</a>
+                <a href="/projects/epitaph">Digital Epitaphs</a>
               </div>
             </div>{' '}
             | <a href="/skills">Skills</a> | <a href="/about">About</a> |{' '}
