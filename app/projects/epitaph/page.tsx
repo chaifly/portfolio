@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import ProjectDetail from '../../../components/ProjectDetail';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://www.aicoder.ink/projects/epitaph',
+  },
+};
 
 export default function EpitaphPage() {
   return (

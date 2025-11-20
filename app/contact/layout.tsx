@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Chaifly',
   ],
   alternates: {
-    canonical: 'https://your-domain.com/contact',
+    canonical: 'https://www.aicoder.ink/contact',
   },
 };
 

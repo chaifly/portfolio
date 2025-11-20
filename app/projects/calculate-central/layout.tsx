@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'Web tools',
   ],
   alternates: {
-    canonical: 'https://your-domain.com/projects/calculate-central',
+    canonical: 'https://www.aicoder.ink/projects/calculate-central',
   },
 };
 

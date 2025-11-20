@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     '作品集',
   ],
   alternates: {
-    canonical: 'https://your-domain.com/projects',
+    canonical: 'https://www.aicoder.ink/projects',
   },
 };
 

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'Chen',
   ],
   alternates: {
-    canonical: 'https://your-domain.com/projects/UselessWeb',
+    canonical: 'https://www.aicoder.ink/projects/UselessWeb',
   },
 };
 

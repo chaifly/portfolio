@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'Experience',
   ],
   alternates: {
-    canonical: 'https://your-domain.com/skills',
+    canonical: 'https://www.aicoder.ink/skills',
   },
 };
 

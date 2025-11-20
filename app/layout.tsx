@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.aicoder.ink'),
   title: 'Chen - AI开发者 | AI-empowered developer',
   description:
     '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、PuzzleZone 和 Useless Web 等代表作品。',
@@ -15,8 +17,21 @@ export const metadata: Metadata = {
     'Useless Web',
     '作品集',
   ],
+  openGraph: {
+    title: 'Chen - AI开发者 | AI-empowered developer',
+    description:
+      '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、PuzzleZone 和 Useless Web 等代表作品。',
+    url: 'https://www.aicoder.ink/',
+    siteName: 'AI Coder · Chen',
+    locale: 'zh_CN',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
-    canonical: 'https://your-domain.com/',
+    canonical: 'https://www.aicoder.ink/',
   },
 };
 
@@ -44,6 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <footer>
           <small>© {new Date().getFullYear()} My Portfolio</small>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
