@@ -3,6 +3,7 @@ import ProjectDetail from '../../../components/ProjectDetail';
 export default function CalculateCentralPage() {
   return (
     <ProjectDetail
+      currentSlug="calculate-central"
       en={{
         title: 'Calculate Central - Online Calculator Toolkit',
         sections: [

@@ -3,6 +3,7 @@ import ProjectDetail from '../../../components/ProjectDetail';
 export default function PuzzleZonePage() {
   return (
     <ProjectDetail
+      currentSlug="PuzzleZone"
       en={{
         title: 'PuzzleZone - Unblocked Browser Games Hub',
         sections: [

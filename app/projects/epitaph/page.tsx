@@ -3,6 +3,7 @@ import ProjectDetail from '../../../components/ProjectDetail';
 export default function EpitaphPage() {
   return (
     <ProjectDetail
+      currentSlug="epitaph"
       en={{
         title: 'Digital Epitaphs - Online Memorial Project',
         sections: [

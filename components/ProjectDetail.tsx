@@ -16,14 +16,45 @@ export type ProjectDetailContent = {
   };
 };
 
+const OTHER_PROJECTS = [
+  {
+    slug: 'calculate-central',
+    href: '/projects/calculate-central',
+    labelEn: 'Calculate Central',
+    labelZh: 'Calculate Central 在线计算器工具集',
+  },
+  {
+    slug: 'PuzzleZone',
+    href: '/projects/PuzzleZone',
+    labelEn: 'PuzzleZone',
+    labelZh: 'PuzzleZone 在线小游戏中心',
+  },
+  {
+    slug: 'UselessWeb',
+    href: '/projects/UselessWeb',
+    labelEn: 'Useless Web',
+    labelZh: 'Useless Web 无用网站实验',
+  },
+  {
+    slug: 'epitaph',
+    href: '/projects/epitaph',
+    labelEn: 'Digital Epitaphs',
+    labelZh: '数字纪念碑',
+  },
+];
+
 export type ProjectDetailProps = {
   en: ProjectDetailContent;
   zh: ProjectDetailContent;
+  currentSlug?: string;
 };
 
-export default function ProjectDetail({ en, zh }: ProjectDetailProps) {
+export default function ProjectDetail({ en, zh, currentSlug }: ProjectDetailProps) {
   const [locale, setLocale] = useState<'en' | 'zh'>('en');
   const content = locale === 'en' ? en : zh;
+  const otherProjects = OTHER_PROJECTS.filter(
+    (project) => !currentSlug || project.slug !== currentSlug,
+  );
 
   return (
     <section>
@@ -71,6 +102,21 @@ export default function ProjectDetail({ en, zh }: ProjectDetailProps) {
           .
         </p>
       </section>
+
+      {otherProjects.length > 0 && (
+        <section>
+          <h2>{locale === 'en' ? 'Other projects' : '其它项目'}</h2>
+          <ul>
+            {otherProjects.map((project) => (
+              <li key={project.slug}>
+                <a href={project.href}>
+                  {locale === 'en' ? project.labelEn : project.labelZh}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </section>
   );
 }

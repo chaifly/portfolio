@@ -3,6 +3,7 @@ import ProjectDetail from '../../../components/ProjectDetail';
 export default function UselessWebPage() {
   return (
     <ProjectDetail
+      currentSlug="UselessWeb"
       en={{
         title: 'Useless Web - Don\'t Click Experiment',
         sections: [

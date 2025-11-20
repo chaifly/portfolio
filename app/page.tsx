@@ -8,8 +8,10 @@ export default function HomePage() {
   const content =
     locale === 'en'
       ? {
-          heroTitle: 'I am Chen, a AI-empowered developer',
-          heroBody:
+          heroTitle: "Hi, I'm Chen 👋",
+          heroSubtitle:
+            'An AI-empowered developer focused on crafting great product experiences.',
+          heroIntro:
             'This is my personal portfolio where I share my work in web development, system design, and product experiments.',
           projectsHeading: 'Featured Projects',
           projects: [
@@ -52,8 +54,9 @@ export default function HomePage() {
           ],
         }
       : {
-          heroTitle: '我是 Chen，一位AI开发者',
-          heroBody:
+          heroTitle: '你好，我是 Chen 👋',
+          heroSubtitle: '一名追求极致体验的 AI 开发者',
+          heroIntro:
             '这是我的个人作品集，我会在这里持续分享在 Web 开发、系统设计以及产品实践方面的经验和项目。',
           projectsHeading: '精选项目',
           projects: [
@@ -96,33 +99,51 @@ export default function HomePage() {
           ],
         };
 
+  const primaryCtaLabel = locale === 'en' ? 'View Work' : '查看作品';
+  const secondaryCtaLabel = locale === 'en' ? 'Contact Me' : '联系我';
+
   return (
     <>
       <section className="hero">
-        <div className="lang-toggle" aria-label="Language switcher">
-          <button
-            type="button"
-            className={locale === 'en' ? 'active' : ''}
-            onClick={() => setLocale('en')}
-          >
-            EN
-          </button>
-          <button
-            type="button"
-            className={locale === 'zh' ? 'active' : ''}
-            onClick={() => setLocale('zh')}
-          >
-            中文
-          </button>
-        </div>
+        <div className="hero-inner">
+          <div className="lang-toggle" aria-label="Language switcher">
+            <button
+              type="button"
+              className={locale === 'en' ? 'active' : ''}
+              onClick={() => setLocale('en')}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              className={locale === 'zh' ? 'active' : ''}
+              onClick={() => setLocale('zh')}
+            >
+              中文
+            </button>
+          </div>
 
-        <div className="hero-content">
-          <h1>{content.heroTitle}</h1>
-          <p>{content.heroBody}</p>
+          <div className="hero-text">
+            <p className="hero-eyebrow">
+              {locale === 'en' ? 'AI · Web · Product' : 'AI · Web · 产品'}
+            </p>
+            <h1 className="hero-title">{content.heroTitle}</h1>
+            <h2 className="hero-subtitle">{content.heroSubtitle}</h2>
+            <p className="hero-intro">{content.heroIntro}</p>
+
+            <div className="hero-actions">
+              <a href="#projects" className="hero-button">
+                {primaryCtaLabel}
+              </a>
+              <a href="/contact" className="hero-secondary-button">
+                {secondaryCtaLabel}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="home-projects">
+      <section className="home-projects" id="projects">
         <h2>{content.projectsHeading}</h2>
         <div className="home-projects-grid">
           {content.projects.map((project) => (
