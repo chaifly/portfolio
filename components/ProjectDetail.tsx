@@ -24,6 +24,12 @@ const OTHER_PROJECTS = [
     labelZh: 'Calculate Central 在线计算器工具集',
   },
   {
+    slug: 'GemGuidePro',
+    href: '/projects/GemGuidePro',
+    labelEn: 'GemGuidePro.com',
+    labelZh: 'GemGuidePro.com 宝石指南平台',
+  },
+  {
     slug: 'PuzzleZone',
     href: '/projects/PuzzleZone',
     labelEn: 'PuzzleZone',

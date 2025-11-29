@@ -4,13 +4,16 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Projects | Chen\'s portfolio',
   description:
-    'Overview of Chen\'s main projects, including Calculate Central, PuzzleZone and Useless Web, each with dedicated detail pages.',
+    "Overview of Chen's main projects, including Calculate Central, GemGuidePro.com, PuzzleZone, Useless Web, and Digital Epitaphs, each with dedicated detail pages.",
   keywords: [
     'Chen',
     'Projects',
     'Calculate Central',
+    'GemGuidePro',
+    'GemGuidePro.com',
     'PuzzleZone',
     'Useless Web',
+    'Digital Epitaphs',
     '作品集',
   ],
   alternates: {

@@ -25,6 +25,15 @@ export default function HomePage() {
               externalLabel: 'Open live site',
             },
             {
+              id: 'gemguide',
+              name: 'GemGuidePro.com',
+              description:
+                'An AI-assisted content platform for gemstone and birthstone buying guides, powered by a headless CMS and automated deployment.',
+              internalHref: '/projects/GemGuidePro',
+              externalHref: 'https://gemguidepro.com/',
+              externalLabel: 'Visit GemGuidePro.com',
+            },
+            {
               id: 'puzzle',
               name: 'PuzzleZone',
               description:
@@ -68,6 +77,15 @@ export default function HomePage() {
               internalHref: '/projects/calculate-central',
               externalHref: 'https://calccentral.net/',
               externalLabel: '打开线上站点',
+            },
+            {
+              id: 'gemguide',
+              name: 'GemGuidePro.com',
+              description:
+                '一个专注宝石与诞生石购买指南的 AI 赋能内容平台，基于 Headless CMS 与自动化部署工作流构建。',
+              internalHref: '/projects/GemGuidePro',
+              externalHref: 'https://gemguidepro.com/',
+              externalLabel: '访问 GemGuidePro.com',
             },
             {
               id: 'puzzle',

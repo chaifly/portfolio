@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/skills',
     '/projects',
     '/projects/calculate-central',
+    '/projects/GemGuidePro',
     '/projects/PuzzleZone',
     '/projects/UselessWeb',
     '/projects/epitaph',

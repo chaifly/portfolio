@@ -22,6 +22,12 @@ const projectsEn = [
       "A 'don't click' style collection of useless websites that also accepts user-submitted links.",
   },
   {
+    slug: 'GemGuidePro',
+    title: 'GemGuidePro.com',
+    summary:
+      'An AI-driven headless content platform for transparent gemstone and birthstone buying guides, with an automated content-as-code workflow.',
+  },
+  {
     slug: 'epitaph',
     title: 'Digital Epitaphs',
     summary:
@@ -47,6 +53,12 @@ const projectsZh = [
     title: 'Useless Web',
     summary:
       '一个以「不要点」形式呈现的无用网站集合，同时支持用户提交新的无用网址。',
+  },
+  {
+    slug: 'GemGuidePro',
+    title: 'GemGuidePro.com',
+    summary:
+      '一个专注宝石与诞生石购买指南的 AI 赋能内容平台，基于 Next.js、Sanity 与 Cloudflare Pages 搭建，并通过自动化工作流实现「内容即代码」。',
   },
   {
     slug: 'epitaph',
