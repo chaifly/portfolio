@@ -14,6 +14,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/projects/UselessWeb',
     '/projects/epitaph',
     '/contact',
+    '/zh',
+    '/zh/about',
+    '/zh/skills',
+    '/zh/projects',
+    '/zh/projects/calculate-central',
+    '/zh/projects/GemGuidePro',
+    '/zh/projects/PuzzleZone',
+    '/zh/projects/UselessWeb',
+    '/zh/projects/epitaph',
+    '/zh/contact',
   ];
 
   const now = new Date();

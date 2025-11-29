@@ -1,9 +1,24 @@
 "use client";
 
-import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function ContactPage() {
-  const [locale, setLocale] = useState<'en' | 'zh'>('en');
+  const router = useRouter();
+  const pathname = usePathname();
+  const isZhRoute = pathname?.startsWith('/zh');
+  const locale: 'en' | 'zh' = isZhRoute ? 'zh' : 'en';
+
+  const switchLocale = (nextLocale: 'en' | 'zh') => {
+    if (!pathname) return;
+    if (nextLocale === 'en') {
+      const newPath = pathname.startsWith('/zh') ? pathname.replace(/^\/zh/, '') || '/' : pathname;
+      router.push(newPath);
+    } else {
+      if (pathname.startsWith('/zh')) return;
+      const newPath = pathname === '/' ? '/zh' : `/zh${pathname}`;
+      router.push(newPath);
+    }
+  };
 
   const content =
     locale === 'en'
@@ -28,14 +43,14 @@ export default function ContactPage() {
         <button
           type="button"
           className={locale === 'en' ? 'active' : ''}
-          onClick={() => setLocale('en')}
+          onClick={() => switchLocale('en')}
         >
           EN
         </button>
         <button
           type="button"
           className={locale === 'zh' ? 'active' : ''}
-          onClick={() => setLocale('zh')}
+          onClick={() => switchLocale('zh')}
         >
           中文
         </button>
