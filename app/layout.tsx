@@ -53,8 +53,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <a href="/projects/emojitik">Tiktok Emojis</a>
               </div>
             </div>{' '}
-            | <a href="/skills">Skills</a> | <a href="/about">About</a> |{' '}
-            <a href="/contact">Contact</a>
+            | <a href="/skills">Skills</a> | <a href="/blog">Blog</a> |{' '}
+            <a href="/about">About</a> | <a href="/contact">Contact</a>
           </nav>
         </header>
         <main>{children}</main>
