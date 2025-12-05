@@ -49,7 +49,7 @@ export default function FirstBlogPage() {
               <h1>First Month Building Small Projects on My Personal Site</h1>
               <p>
                 It has actually been almost two months already. If I exclude the initial
-                learning period, that leaves a bit more than one month of "real"
+                learning period, that leaves a bit more than one month of real
                 execution, roughly keeping a pace of one small project per week. I
                 started from being completely unfamiliar with the whole process, and now
                 I more or less understand the end-to-end flow. Traffic-wise, though,
@@ -97,7 +97,7 @@ export default function FirstBlogPage() {
             <>
               <h1>个人网站创业尝试首月记</h1>
               <p>
-                其实已经过了快 2 个月，除去刚开始的学习时间，算下来差不多有 1 个多月的"正式"尝试，基本保持了一周一个小项目的节奏。从最初对整个流程完全生疏，到现在对端到端的链路大致摸清了，但目前还没有获得太多流量上的收获……可能需要一个过程吧。
+                其实已经过了快 2 个月，除去刚开始的学习时间，算下来差不多有 1 个多月的正式尝试，基本保持了一周一个小项目的节奏。从最初对整个流程完全生疏，到现在对端到端的链路大致摸清了，但目前还没有获得太多流量上的收获……可能需要一个过程吧。
               </p>
               <p>
                 第一个项目纯粹是尝试，模仿了 Useless Web 做的经典{' '}
