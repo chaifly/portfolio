@@ -75,6 +75,15 @@ export default function HomePage() {
               externalHref: 'https://epitaph.world/',
               externalLabel: 'Visit the memorial',
             },
+            {
+              id: 'emojitik',
+              name: 'Tiktok Emojis',
+              description:
+                "The ultimate TikTok secret emoji code library with mobile-first one-click copy and visual emotional indexing.",
+              internalHref: '/projects/emojitik',
+              externalHref: 'https://emojitik.com/',
+              externalLabel: 'Open Emojitik.com',
+            },
           ],
         }
       : {
@@ -128,6 +137,15 @@ export default function HomePage() {
               internalHref: '/projects/epitaph',
               externalHref: 'https://epitaph.world/',
               externalLabel: '访问线上站点',
+            },
+            {
+              id: 'emojitik',
+              name: 'Tiktok Emojis',
+              description:
+                '一个专注 TikTok 隐藏表情代码（如 [cry]）的垂直工具站，提供移动优先的一键复制与可视化情绪索引体验。',
+              internalHref: '/projects/emojitik',
+              externalHref: 'https://emojitik.com/',
+              externalLabel: '访问 Emojitik.com',
             },
           ],
         };

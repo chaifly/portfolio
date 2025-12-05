@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 export type ProjectDetailContent = {
@@ -48,6 +49,46 @@ const OTHER_PROJECTS = [
     labelZh: '数字纪念碑',
   },
 ];
+
+function renderRichParagraph(text: string): ReactNode {
+  const parts = text.split(/(Emojitik\.com|\[cry\])/);
+
+  return parts.map((part, index) => {
+    if (part === 'Emojitik.com') {
+      return (
+        <a
+          key={`emojitik-${index}`}
+          href="https://emojitik.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Emojitik.com
+        </a>
+      );
+    }
+
+    if (part === '[cry]') {
+      return (
+        <a
+          key={`cry-${index}`}
+          href="https://emojitik.com/tiktok-emoji/cry"
+          target="_blank"
+          rel="noreferrer"
+        >
+          [cry]
+        </a>
+      );
+    }
+
+    if (!part) return null;
+
+    return (
+      <span key={`text-${index}`}>
+        {part}
+      </span>
+    );
+  });
+}
 
 export type ProjectDetailProps = {
   en: ProjectDetailContent;
@@ -102,7 +143,7 @@ export default function ProjectDetail({ en, zh, currentSlug }: ProjectDetailProp
         <section key={section.heading}>
           <h2>{section.heading}</h2>
           {section.paragraphs?.map((p) => (
-            <p key={p}>{p}</p>
+            <p key={p}>{renderRichParagraph(p)}</p>
           ))}
           {section.listItems && section.listItems.length > 0 && (
             <ul>

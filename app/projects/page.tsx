@@ -33,6 +33,12 @@ const projectsEn = [
     summary:
       'A digital memorial project that curates epitaphs and the stories behind them, exploring the meaning and value of life.',
   },
+  {
+    slug: 'emojitik',
+    title: 'Tiktok Emojis',
+    summary:
+      "The ultimate TikTok hidden emoji code tool (e.g., [cry]) with mobile-first one-click copy and visual emotional indexing.",
+  },
 ];
 
 const projectsZh = [
@@ -65,6 +71,12 @@ const projectsZh = [
     title: 'Digital Epitaphs',
     summary:
       '一个收集世界各地墓志铭及其背后故事的数字纪念项目，尝试一起思考生命的意义与价值。',
+  },
+  {
+    slug: 'emojitik',
+    title: 'Tiktok Emojis',
+    summary:
+      '一个专注 TikTok 隐藏表情代码（如 [cry]）的垂直工具站，提供移动优先的一键复制与可视化情绪索引体验。',
   },
 ];
 
