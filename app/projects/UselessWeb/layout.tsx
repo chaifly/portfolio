@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Useless Web | Don\'t Click Experiment by Chen',
+  title: 'Useless Web | Don&apos;t Click Experiment by Chen',
   description:
-    "Useless Web is Chen's first experimental project, a playful 'don't click' style collection of useless websites with user submissions.",
+    "Useless Web is Chen&apos;s first experimental project, a playful 'don&apos;t click' style collection of useless websites with user submissions.",
   keywords: [
     'Useless Web',
-    'Don\'t click',
+    'Don&apos;t click',
     'Experimental project',
     'Useless websites',
     'Chen',

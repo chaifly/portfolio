@@ -41,7 +41,7 @@ export default function AboutPage() {
       ? {
           title: 'About Me',
           body:
-            "I'm Chen, an AI-focused developer and data professional with experience across finance, telecom, local services and content safety. I started from data analysis and data modeling, working with Python, SQL and metric systems to support product and business decisions, and gradually moved into building web products such as Calculate Central, PuzzleZone and Useless Web. On this site I share both my technical work and how I think about product design, aiming to demonstrate solid E-E-A-T: real-world experience, technical expertise, a track record of shipping projects, and a transparent way of presenting my work.",
+            "I&apos;m Chen, an AI-focused developer and data professional with experience across finance, telecom, local services and content safety. I started from data analysis and data modeling, working with Python, SQL and metric systems to support product and business decisions, and gradually moved into building web products such as Calculate Central, PuzzleZone and Useless Web. On this site I share both my technical work and how I think about product design, aiming to demonstrate solid E-E-A-T: real-world experience, technical expertise, a track record of shipping projects, and a transparent way of presenting my work.",
         }
       : {
           title: '关于我',

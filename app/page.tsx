@@ -23,7 +23,7 @@ export default function HomePage() {
   const content =
     locale === 'en'
       ? {
-          heroTitle: "Hi, I'm Chen 👋",
+          heroTitle: "Hi, I&apos;m Chen 👋",
           heroSubtitle:
             'An AI-empowered developer focused on crafting great product experiences.',
           heroIntro:
@@ -61,7 +61,7 @@ export default function HomePage() {
               id: 'useless',
               name: 'Useless Web',
               description:
-                "My first experimental project: a playful 'don't click' style collection of useless websites with user submissions.",
+                "My first experimental project: a playful 'don&apos;t click' style collection of useless websites with user submissions.",
               internalHref: '/projects/UselessWeb',
               externalHref: 'https://www.uselessweb.net/',
               externalLabel: 'Visit the experiment',

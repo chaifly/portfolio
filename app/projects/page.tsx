@@ -19,7 +19,7 @@ const projectsEn = [
     slug: 'UselessWeb',
     title: 'Useless Web',
     summary:
-      "A 'don't click' style collection of useless websites that also accepts user-submitted links.",
+      "A 'don&apos;t click' style collection of useless websites that also accepts user-submitted links.",
   },
   {
     slug: 'GemGuidePro',

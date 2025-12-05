@@ -62,7 +62,7 @@ export default function FirstBlogPage() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  [don't click]
+                  [don&apos;t click]
                 </a>
                 . It was just a single-page site in a similar style. Unsurprisingly, the
                 results were pretty average, but I also did not set high expectations for
@@ -106,7 +106,7 @@ export default function FirstBlogPage() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  [don't click]
+                  [don&apos;t click]
                 </a>
                 ，就一个单独页面，结果自然是一般般，好在一开始也没有抱太高期望。
               </p>

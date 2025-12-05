@@ -5,19 +5,19 @@ export default function UselessWebPage() {
     <ProjectDetail
       currentSlug="UselessWeb"
       en={{
-        title: 'Useless Web - Don\'t Click Experiment',
+        title: 'Useless Web - Don&apos;t Click Experiment',
         sections: [
           {
             heading: 'Overview',
             paragraphs: [
-              "Useless Web is my first experimental web project, inspired by an existing 'useless websites' collection but reimagined with a playful 'don't click' experience.",
+              "Useless Web is my first experimental web project, inspired by an existing 'useless websites' collection but reimagined with a playful 'don&apos;t click' experience.",
               'Instead of directly listing links, the site invites visitors to resist the urge to click, turning a simple collection of useless sites into a small interaction experiment.',
             ],
           },
           {
             heading: 'Concept & Interaction',
             paragraphs: [
-              "The core idea is intentionally simple: present a big 'don\'t click' style entry point that teasingly encourages people to click anyway.",
+              "The core idea is intentionally simple: present a big 'don&apos;t click' style entry point that teasingly encourages people to click anyway.",
               'Behind that entry are randomly surfaced useless websites — quirky pages that do nothing practical but are oddly entertaining.',
             ],
           },
@@ -30,7 +30,7 @@ export default function UselessWebPage() {
           },
         ],
         cta: {
-          prefix: 'To experience the \"don\'t click\" experiment yourself, ',
+          prefix: 'To experience the "don&apos;t click" experiment yourself, ',
           text: 'visit the Useless Web site',
           href: 'https://www.uselessweb.net/',
         },
