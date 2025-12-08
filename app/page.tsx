@@ -23,7 +23,7 @@ export default function HomePage() {
   const content =
     locale === 'en'
       ? {
-          heroTitle: "Hi, I&apos;m Chen 👋",
+          heroTitle: "Hi, I'm Chen 👋",
           heroSubtitle:
             'An AI-empowered developer focused on crafting great product experiences.',
           heroIntro:
