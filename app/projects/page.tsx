@@ -39,6 +39,12 @@ const projectsEn = [
     summary:
       "The ultimate TikTok hidden emoji code tool (e.g., [cry]) with mobile-first one-click copy and visual emotional indexing.",
   },
+  {
+    slug: 'techpulse',
+    title: 'TechPulse',
+    summary:
+      "A keyword-research-backed Apple hardware site: iPhone 18, iPhone Fold and more. Built from a Google Trends pipeline that identified a 256K-vol, low-KD iPhone 18 cluster as a long-term SEO opportunity.",
+  },
 ];
 
 const projectsZh = [
@@ -77,6 +83,12 @@ const projectsZh = [
     title: 'Tiktok Emojis',
     summary:
       '一个专注 TikTok 隐藏表情代码（如 [cry]）的垂直工具站，提供移动优先的一键复制与可视化情绪索引体验。',
+  },
+  {
+    slug: 'techpulse',
+    title: 'TechPulse',
+    summary:
+      '由关键词研究驱动上线的 Apple 硬件编辑站：覆盖 iPhone 18、iPhone Fold 等。立项依据来自一个 Google Trends 流水线，识别出月搜索量 256K、平均 KD 仅 19 的 iPhone 18 词簇是长期 SEO 机会。',
   },
 ];
 

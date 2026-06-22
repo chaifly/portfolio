@@ -7,20 +7,25 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.aicoder.ink'),
   title: 'Chen - AI开发者 | AI-empowered developer',
   description:
-    '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、PuzzleZone 和 Useless Web 等代表作品。',
+    '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、GemGuidePro、PuzzleZone、Useless Web、Digital Epitaphs、Emojitik 和 TechPulse 等代表作品。',
   keywords: [
     'Chen',
     'AI开发者',
     'AI developer',
     'Calculate Central',
+    'GemGuidePro',
     'PuzzleZone',
     'Useless Web',
+    'Digital Epitaphs',
+    'Tiktok Emojis',
+    'TechPulse',
+    'techpulse.press',
     '作品集',
   ],
   openGraph: {
     title: 'Chen - AI开发者 | AI-empowered developer',
     description:
-      '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、PuzzleZone 和 Useless Web 等代表作品。',
+      '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、GemGuidePro、PuzzleZone、Useless Web、Digital Epitaphs、Emojitik 和 TechPulse 等代表作品。',
     url: 'https://www.aicoder.ink/',
     siteName: 'AI Coder · Chen',
     locale: 'zh_CN',
@@ -51,6 +56,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <a href="/projects/UselessWeb">Useless Web</a>
                 <a href="/projects/epitaph">Digital Epitaphs</a>
                 <a href="/projects/emojitik">Tiktok Emojis</a>
+                <a href="/projects/techpulse">TechPulse</a>
               </div>
             </div>{' '}
             | <a href="/skills">Skills</a> | <a href="/blog">Blog</a> |{' '}

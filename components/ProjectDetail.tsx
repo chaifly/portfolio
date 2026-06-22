@@ -15,6 +15,10 @@ export type ProjectDetailContent = {
     text: string;
     href: string;
   };
+  external?: {
+    label: string;
+    href: string;
+  };
 };
 
 const OTHER_PROJECTS = [
@@ -47,6 +51,12 @@ const OTHER_PROJECTS = [
     href: '/projects/epitaph',
     labelEn: 'Digital Epitaphs',
     labelZh: '数字纪念碑',
+  },
+  {
+    slug: 'techpulse',
+    href: '/projects/techpulse',
+    labelEn: 'TechPulse',
+    labelZh: 'TechPulse 编辑级 Apple 硬件情报站',
   },
 ];
 
@@ -94,9 +104,17 @@ export type ProjectDetailProps = {
   en: ProjectDetailContent;
   zh: ProjectDetailContent;
   currentSlug?: string;
+  externalUrl?: string;
+  externalLabel?: string;
 };
 
-export default function ProjectDetail({ en, zh, currentSlug }: ProjectDetailProps) {
+export default function ProjectDetail({
+  en,
+  zh,
+  currentSlug,
+  externalUrl,
+  externalLabel,
+}: ProjectDetailProps) {
   const router = useRouter();
   const pathname = usePathname();
   const isZhRoute = pathname?.startsWith('/zh');
@@ -114,6 +132,8 @@ export default function ProjectDetail({ en, zh, currentSlug }: ProjectDetailProp
     }
   };
   const content = locale === 'en' ? en : zh;
+  const liveUrl = content.external?.href ?? externalUrl;
+  const liveLabel = content.external?.label ?? externalLabel;
   const otherProjects = OTHER_PROJECTS.filter(
     (project) => !currentSlug || project.slug !== currentSlug,
   );
@@ -137,7 +157,19 @@ export default function ProjectDetail({ en, zh, currentSlug }: ProjectDetailProp
         </button>
       </div>
 
-      <h1>{content.title}</h1>
+      <h1>
+        {content.title}
+        {liveUrl && (
+          <a
+            className="project-live-badge"
+            href={liveUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {liveLabel ?? (locale === 'en' ? 'Visit live site ↗' : '访问线上站点 ↗')}
+          </a>
+        )}
+      </h1>
 
       {content.sections.map((section) => (
         <section key={section.heading}>

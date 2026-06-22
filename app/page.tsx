@@ -84,6 +84,15 @@ export default function HomePage() {
               externalHref: 'https://emojitik.com/',
               externalLabel: 'Open Emojitik.com',
             },
+            {
+              id: 'techpulse',
+              name: 'TechPulse',
+              description:
+                "A keyword-research-backed Apple hardware site: iPhone 18, iPhone Fold and more. Built from a Google Trends pipeline that identified a 256K-vol, low-KD iPhone 18 cluster as a long-term SEO opportunity.",
+              internalHref: '/projects/techpulse',
+              externalHref: 'https://techpulse.press/',
+              externalLabel: 'Visit TechPulse.press',
+            },
           ],
         }
       : {
@@ -146,6 +155,15 @@ export default function HomePage() {
               internalHref: '/projects/emojitik',
               externalHref: 'https://emojitik.com/',
               externalLabel: '访问 Emojitik.com',
+            },
+            {
+              id: 'techpulse',
+              name: 'TechPulse',
+              description:
+                '由关键词研究驱动上线的 Apple 硬件编辑站：覆盖 iPhone 18、iPhone Fold 等。立项依据来自一个 Google Trends 流水线，识别出月搜索量 256K、平均 KD 仅 19 的 iPhone 18 词簇是长期 SEO 机会。',
+              internalHref: '/projects/techpulse',
+              externalHref: 'https://techpulse.press/',
+              externalLabel: '访问 TechPulse.press',
             },
           ],
         };

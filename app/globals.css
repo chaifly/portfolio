@@ -369,3 +369,27 @@ footer small {
   color: #FFFFFF;
   border-color: #2563EB;
 }
+
+/* Live site badge in project detail title */
+.project-live-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #1D4ED8;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 999px;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.project-live-badge:hover {
+  background-color: #DBEAFE;
+  border-color: #93C5FD;
+  color: #1E40AF;
+}

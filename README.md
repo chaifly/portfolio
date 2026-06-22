@@ -56,6 +56,14 @@ Personal portfolio built with Next.js App Router.
 
 ---
 
+### 7. TechPulse
+**中文：** 由关键词研究驱动上线的 Apple 硬件编辑站。立项依据来自一个 Google Trends 流水线：iPhone 18 词簇 100 个关键词、月搜索量 256K、平均 KD 19.1（未发布词的「先入者优势」窗口），81% 是信息查询意图。覆盖 iPhone 18 系列、iPhone Fold、iOS 27 等，每条结论带 Confidence 字段（Confirmed / Credible / Possible / Speculative）和一手信源链接。技术栈：Next.js + Tailwind CSS + Cloudflare Pages + Pagefind + Beehiiv + Plausible。
+**English:** A keyword-research-backed Apple hardware intelligence site. It is the direct build of a Google Trends pipeline that identified the iPhone 18 keyword cluster (100 keywords / 256K monthly volume / average KD 19.1 / 81% informational intent) as a long-term SEO opportunity. Covers iPhone 18 lineup, iPhone Fold, iOS 27 and more. Every claim carries a confidence field (Confirmed / Credible / Possible / Speculative) and a primary-source link. Stack: Next.js + Tailwind + Cloudflare Pages + Pagefind + Beehiiv + Plausible.
+
+🔗 **访问地址 | Visit:** [https://techpulse.press/](https://techpulse.press/)
+
+---
+
 ## 技术栈 | Tech Stack
 
 - **前端框架 | Frontend:** Next.js 14 (App Router)

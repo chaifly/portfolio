@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     'PuzzleZone',
     'Useless Web',
     'Digital Epitaphs',
+    'Tiktok Emojis',
+    'TechPulse',
+    'techpulse.press',
     '作品集',
   ],
   alternates: {

@@ -25,7 +25,7 @@ export default function SkillsPage() {
     '@type': 'Person',
     name: 'Chen',
     jobTitle: locale === 'en' ? 'Data Analyst / Data Product Professional' : '数据分析师 / 数据产品从业者',
-    url: 'https://your-portfolio-domain.com',
+    url: 'https://www.aicoder.ink',
     skills:
       locale === 'en'
         ? [
