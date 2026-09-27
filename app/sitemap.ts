@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/projects/epitaph',
     '/projects/emojitik',
     '/projects/techpulse',
+    '/projects/flockfinder',
     '/contact',
     '/zh',
     '/zh/about',
@@ -31,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/zh/projects/epitaph',
     '/zh/projects/emojitik',
     '/zh/projects/techpulse',
+    '/zh/projects/flockfinder',
     '/zh/contact',
   ];
 

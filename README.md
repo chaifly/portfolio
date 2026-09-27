@@ -64,6 +64,14 @@ Personal portfolio built with Next.js App Router.
 
 ---
 
+### 8. flockfinder.online
+**中文：** 一个独立的公民透明度项目，使用公开记录与开放政府数据记录美国各城市的自动车牌识别（ALPR）摄像头网络。由 The Transparency Project 运营，与 Flock Safety 等任何 ALPR 厂商均无关联。四类产品：Camera Map（Leaflet + OpenStreetMap 全国摄像头地图）、City Dossiers（按城市的长期档案）、FOIA Tracker（信息自由申请台账）、Cancel Tracker（退出 ALPR 合同的退出追踪）。信源硬规则：100% Records sourced from public government documents；不发布任何破坏 / 停用公共设施的指引。运营地址：PO Box 1, Boston, MA 02101。
+**English:** An independent civic transparency project that maps Automated License Plate Reader (ALPR) camera networks across U.S. cities using only public records and open government data. Operated by The Transparency Project and explicitly not affiliated with Flock Group Inc. or any ALPR vendor or government agency. Four product pillars: Camera Map (Leaflet + OpenStreetMap nationwide overlay), City Dossiers (long-form per-city profiles), FOIA Tracker (public log of filed records requests), and Cancel Tracker (running index of cities that ended their contracts). Sourcing rule: 100% Records sourced from public government documents; never publishes instructions that facilitate damage to or tampering with public infrastructure. Mailing address: PO Box 1, Boston, MA 02101.
+
+🔗 **访问地址 | Visit:** [https://flockfinder.online/](https://flockfinder.online/)
+
+---
+
 ## 技术栈 | Tech Stack
 
 - **前端框架 | Frontend:** Next.js 14 (App Router)

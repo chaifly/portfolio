@@ -35,14 +35,14 @@ export default function AboutPage() {
     locale === 'en'
       ? {
           title: 'About Me',
-          body:
-            "I&apos;m Chen, an AI-focused developer and data professional with experience across finance, telecom, local services and content safety. I started from data analysis and data modeling, working with Python, SQL and metric systems to support product and business decisions, and gradually moved into building web products such as Calculate Central, PuzzleZone, Useless Web, and more recently TechPulse, a keyword-research-driven Apple hardware site. On this site I share both my technical work and how I think about product design, aiming to demonstrate solid E-E-A-T: real-world experience, technical expertise, a track record of shipping projects, and a transparent way of presenting my work.",
-        }
+        body:
+            "I&apos;m Chen, an AI-focused developer and data professional with experience across finance, telecom, local services and content safety. I started from data analysis and data modeling, working with Python, SQL and metric systems to support product and business decisions, and gradually moved into building web products such as Calculate Central, PuzzleZone, Useless Web, and more recently TechPulse (a keyword-research-driven Apple hardware site) and flockfinder.online (an independent public-records-backed ALPR transparency project). On this site I share both my technical work and how I think about product design, aiming to demonstrate solid E-E-A-T: real-world experience, technical expertise, a track record of shipping projects, and a transparent way of presenting my work.",
+      }
       : {
-          title: '关于我',
-          body:
-            '你好，我是 Chen，一名偏向 AI 与数据方向的开发者与数据从业者，先后参与过金融、电信运营商、本地生活和内容安全等多个业务领域。职业起点是数据分析和数据建模，日常工作围绕 Python、SQL、指标体系与宽表建模，为产品和业务提供数据决策支持，并在此基础上逐步尝试把能力沉淀为在线产品，例如 Calculate Central 计算器工具集、PuzzleZone 小游戏站、Useless Web 实验项目，以及最近上线的、由关键词研究驱动立项的 Apple 硬件编辑站 TechPulse。在这个站点里，我会尽量用清晰、可验证的方式呈现自己的项目和思考，以体现 E-E-A-T：真实经验、专业能力、可追溯的项目成果，以及对内容负责的态度。',
-        };
+        title: '关于我',
+        body:
+            '你好，我是 Chen，一名偏向 AI 与数据方向的开发者与数据从业者，先后参与过金融、电信运营商、本地生活和内容安全等多个业务领域。职业起点是数据分析和数据建模，日常工作围绕 Python、SQL、指标体系与宽表建模，为产品和业务提供数据决策支持，并在此基础上逐步尝试把能力沉淀为在线产品，例如 Calculate Central 计算器工具集、PuzzleZone 小游戏站、Useless Web 实验项目，以及最近上线的、由关键词研究驱动立项的 Apple 硬件编辑站 TechPulse，和基于公开记录做的 ALPR 公民透明度项目 flockfinder.online。在这个站点里，我会尽量用清晰、可验证的方式呈现自己的项目和思考，以体现 E-E-A-T：真实经验、专业能力、可追溯的项目成果，以及对内容负责的态度。',
+      };
 
   return (
     <>

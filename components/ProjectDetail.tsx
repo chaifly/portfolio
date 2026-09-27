@@ -58,6 +58,12 @@ const OTHER_PROJECTS = [
     labelEn: 'TechPulse',
     labelZh: 'TechPulse 编辑级 Apple 硬件情报站',
   },
+  {
+    slug: 'flockfinder',
+    href: '/projects/flockfinder',
+    labelEn: 'flockfinder.online',
+    labelZh: 'flockfinder.online - 由公开记录驱动的 ALPR 透明度站',
+  },
 ];
 
 function renderRichParagraph(text: string): ReactNode {

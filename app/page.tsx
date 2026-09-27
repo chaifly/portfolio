@@ -93,6 +93,15 @@ export default function HomePage() {
               externalHref: 'https://techpulse.press/',
               externalLabel: 'Visit TechPulse.press',
             },
+            {
+              id: 'flockfinder',
+              name: 'flockfinder.online',
+              description:
+                'An independent civic transparency project that maps ALPR (Automated License Plate Reader) camera networks across U.S. cities using only public records and open government data. Operated by The Transparency Project, not affiliated with Flock Safety or any ALPR vendor.',
+              internalHref: '/projects/flockfinder',
+              externalHref: 'https://flockfinder.online/',
+              externalLabel: 'Visit flockfinder.online',
+            },
           ],
         }
       : {
@@ -164,6 +173,15 @@ export default function HomePage() {
               internalHref: '/projects/techpulse',
               externalHref: 'https://techpulse.press/',
               externalLabel: '访问 TechPulse.press',
+            },
+            {
+              id: 'flockfinder',
+              name: 'flockfinder.online',
+              description:
+                '一个独立的公民透明度项目，使用公开记录与开放政府数据记录美国各城市的自动车牌识别（ALPR）摄像头网络。由 The Transparency Project 运营，与 Flock Safety 等 ALPR 厂商无任何关联。',
+              internalHref: '/projects/flockfinder',
+              externalHref: 'https://flockfinder.online/',
+              externalLabel: '访问 flockfinder.online',
             },
           ],
         };

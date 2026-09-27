@@ -45,6 +45,12 @@ const projectsEn = [
     summary:
       "A keyword-research-backed Apple hardware site: iPhone 18, iPhone Fold and more. Built from a Google Trends pipeline that identified a 256K-vol, low-KD iPhone 18 cluster as a long-term SEO opportunity.",
   },
+  {
+    slug: 'flockfinder',
+    title: 'flockfinder.online',
+    summary:
+      'An independent civic transparency project that maps ALPR camera networks across U.S. cities using only public records and open government data. Operated by The Transparency Project; not affiliated with Flock Safety or any ALPR vendor.',
+  },
 ];
 
 const projectsZh = [
@@ -89,6 +95,12 @@ const projectsZh = [
     title: 'TechPulse',
     summary:
       '由关键词研究驱动上线的 Apple 硬件编辑站：覆盖 iPhone 18、iPhone Fold 等。立项依据来自一个 Google Trends 流水线，识别出月搜索量 256K、平均 KD 仅 19 的 iPhone 18 词簇是长期 SEO 机会。',
+  },
+  {
+    slug: 'flockfinder',
+    title: 'flockfinder.online',
+    summary:
+      '一个独立的公民透明度项目，使用公开记录与开放政府数据记录美国各城市的自动车牌识别（ALPR）摄像头网络。由 The Transparency Project 运营，与 Flock Safety 等 ALPR 厂商无任何关联。',
   },
 ];
 
