@@ -1,68 +1,95 @@
-"use client";
+import type { Metadata } from 'next';
+import LocaleShell from '../../components/LocaleShell';
+import { CONTACT_CONTENT } from '../../lib/content';
 
-import { usePathname, useRouter } from 'next/navigation';
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'How to reach Chen — channels, current availability, and how I handle inbound.',
+  alternates: { canonical: 'https://www.aicoder.ink/contact' },
+};
 
-export default function ContactPage() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const isZhRoute = pathname?.startsWith('/zh');
-  const locale: 'en' | 'zh' = isZhRoute ? 'zh' : 'en';
-
-  const switchLocale = (nextLocale: 'en' | 'zh') => {
-    if (!pathname) return;
-    if (nextLocale === 'en') {
-      const newPath = pathname.startsWith('/zh') ? pathname.replace(/^\/zh/, '') || '/' : pathname;
-      router.push(newPath);
-    } else {
-      if (pathname.startsWith('/zh')) return;
-      const newPath = pathname === '/' ? '/zh' : `/zh${pathname}`;
-      router.push(newPath);
-    }
-  };
-
-  const content =
-    locale === 'en'
-      ? {
-          title: 'Contact',
-          body:
-            'You can reach me on X (Twitter) at @Chaifly. This is currently my primary public channel for sharing updates and project notes.',
-          xLabel: 'Visit my X profile',
-          xUrl: 'https://x.com/Chaifly',
-        }
-      : {
-          title: '联系我',
-          body:
-            '目前我主要通过 X 账号 @Chaifly 对外分享更新和项目进展，如果你有合作或交流需求，可以在 X 上私信或 @ 我。',
-          xLabel: '前往我的 X 个人主页',
-          xUrl: 'https://x.com/Chaifly',
-        };
-
+function ContactEn() {
+  const c = CONTACT_CONTENT.en;
   return (
-    <section>
-      <div className="lang-toggle" aria-label="Language switcher">
-        <button
-          type="button"
-          className={locale === 'en' ? 'active' : ''}
-          onClick={() => switchLocale('en')}
-        >
-          EN
-        </button>
-        <button
-          type="button"
-          className={locale === 'zh' ? 'active' : ''}
-          onClick={() => switchLocale('zh')}
-        >
-          中文
-        </button>
+    <section className="container contact-page">
+      <header className="contact-header">
+        <h1>{c.pageTitle}</h1>
+        <p>{c.intro}</p>
+      </header>
+
+      <div className="contact-grid">
+        {c.channels.map((ch) => (
+          <a key={ch.label} href={ch.href} className="channel-card">
+            <span className="channel-card-label">{ch.label}</span>
+            <span className="channel-card-value">{ch.value}</span>
+            <span className="channel-card-hint">{ch.hint}</span>
+          </a>
+        ))}
       </div>
 
-      <h1>{content.title}</h1>
-      <p>{content.body}</p>
-      <p>
-        <a href={content.xUrl} target="_blank" rel="noreferrer">
-          {content.xLabel}
-        </a>
-      </p>
+      <div className="container-tight">
+        <div className="availability-strip">
+          <span className="availability-dot" />
+          <span>
+            <strong>{c.availabilityLabel}:</strong> {c.availabilityBody}
+          </span>
+        </div>
+
+        <div style={{ marginTop: '2rem' }}>
+          <h2>{c.expectationHeading}</h2>
+          <ul>
+            {c.expectations.map((e, i) => (
+              <li key={i}>{e}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 }
+
+function ContactZh() {
+  const c = CONTACT_CONTENT.zh;
+  return (
+    <section className="container contact-page">
+      <header className="contact-header">
+        <h1>{c.pageTitle}</h1>
+        <p>{c.intro}</p>
+      </header>
+
+      <div className="contact-grid">
+        {c.channels.map((ch) => (
+          <a key={ch.label} href={ch.href} className="channel-card">
+            <span className="channel-card-label">{ch.label}</span>
+            <span className="channel-card-value">{ch.value}</span>
+            <span className="channel-card-hint">{ch.hint}</span>
+          </a>
+        ))}
+      </div>
+
+      <div className="container-tight">
+        <div className="availability-strip">
+          <span className="availability-dot" />
+          <span>
+            <strong>{c.availabilityLabel}:</strong> {c.availabilityBody}
+          </span>
+        </div>
+
+        <div style={{ marginTop: '2rem' }}>
+          <h2>{c.expectationHeading}</h2>
+          <ul>
+            {c.expectations.map((e, i) => (
+              <li key={i}>{e}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function ContactPage() {
+  return <LocaleShell en={<ContactEn />} zh={<ContactZh />} />;
+}
+

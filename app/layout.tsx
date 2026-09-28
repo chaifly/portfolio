@@ -1,46 +1,146 @@
 import type { ReactNode } from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
+import Logo from '../components/Logo';
+import { PROJECTS } from '../lib/projects';
 import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.aicoder.ink'),
-  title: 'Chen - AI开发者 | AI-empowered developer',
+  title: {
+    default: 'AI Coder · Chen — AI-empowered developer',
+    template: '%s · AI Coder · Chen',
+  },
   description:
-    '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、GemGuidePro、PuzzleZone、Useless Web、Digital Epitaphs、Emojitik、TechPulse 和 flockfinder.online 等代表作品。',
+    'Personal site of Chen — an AI-empowered developer and data practitioner shipping one small product a week. Featured projects: Calculate Central, GemGuidePro, PuzzleZone, Useless Web, Digital Epitaphs, Emojitik, TechPulse and flockfinder.online.',
   keywords: [
     'Chen',
-    'AI开发者',
     'AI developer',
-    'Calculate Central',
-    'GemGuidePro',
-    'PuzzleZone',
-    'Useless Web',
-    'Digital Epitaphs',
-    'Tiktok Emojis',
+    'AI 开发者',
+    'portfolio',
+    'aicoder.ink',
+    'Next.js',
+    'keyword research',
+    'civic transparency',
     'TechPulse',
     'techpulse.press',
     'flockfinder.online',
     'ALPR',
-    '作品集',
   ],
   openGraph: {
-    title: 'Chen - AI开发者 | AI-empowered developer',
+    title: 'AI Coder · Chen — AI-empowered developer',
     description:
-      '个人作品集，展示了 Chen 在 AI 开发与数据领域的技术经验和项目，包括 Calculate Central、GemGuidePro、PuzzleZone、Useless Web、Digital Epitaphs、Emojitik、TechPulse 和 flockfinder.online 等代表作品。',
+      'Personal site of Chen — shipping one small product a week, with a keyword-research pipeline that decides what to build next.',
     url: 'https://www.aicoder.ink/',
     siteName: 'AI Coder · Chen',
     locale: 'zh_CN',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Coder · Chen — shipping one small product a week.',
+      },
+    ],
   },
-  robots: {
-    index: true,
-    follow: true,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Coder · Chen — AI-empowered developer',
+    description:
+      'Personal site of Chen — shipping one small product a week, with a keyword-research pipeline that decides what to build next.',
+    images: ['/og-image.png'],
   },
-  alternates: {
-    canonical: 'https://www.aicoder.ink/',
-  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://www.aicoder.ink/' },
 };
+
+export const viewport: Viewport = {
+  themeColor: '#0F172A',
+};
+
+function NavLinks() {
+  return (
+    <div className="nav-links">
+      <a href="/">Home</a>
+      <div className="nav-item-projects">
+        <a href="/projects">Projects</a>
+        <div className="nav-projects-dropdown" role="menu">
+          {PROJECTS.map((p) => (
+            <a key={p.slug} href={`/projects/${p.slug}`} role="menuitem">
+              {p.name}
+            </a>
+          ))}
+        </div>
+      </div>
+      <a href="/skills">Skills</a>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+  );
+}
+
+function NavMobileToggle() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html:
+          "(function(){var t=document.querySelector('.nav-toggle');var l=document.querySelector('.nav-links');if(t&&l){t.addEventListener('click',function(){l.classList.toggle('is-open');});}})();",
+      }}
+    />
+  );
+}
+
+function SiteFooter() {
+  const year = new Date().getFullYear();
+  return (
+    <footer className="site-footer">
+      <div className="site-footer-inner">
+        <div className="footer-meta">
+          <strong>AI Coder · Chen</strong>
+          Shipping one small product a week, with a keyword-research
+          pipeline that decides what to build next. Independent. Async-friendly.
+        </div>
+        <div>
+          <h3>Sitemap</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/skills">Skills</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Currently building</h3>
+          <ul>
+            <li><a href="/projects/techpulse">TechPulse</a></li>
+            <li><a href="/projects/flockfinder">flockfinder.online</a></li>
+            <li><a href="/projects/GemGuidePro">GemGuidePro</a></li>
+          </ul>
+        </div>
+      </div>
+      <div className="site-footer-bottom">
+        <span>
+          © {year} AI Coder · Chen. All projects are independently operated.
+        </span>
+        <span>
+          <a href="https://x.com/Chaifly" rel="noreferrer">
+            X / @Chaifly
+          </a>
+          {' · '}
+          <a href="https://github.com/chaifly" rel="noreferrer">
+            GitHub
+          </a>
+          {' · '}
+          <a href="/sitemap.xml">Sitemap</a>
+        </span>
+      </div>
+    </footer>
+  );
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -48,28 +148,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <header className="site-header">
           <nav className="main-nav">
-            <a href="/">Home</a> |{' '}
-            <div className="nav-item-projects">
-              <a href="/projects">Projects</a>
-              <div className="nav-projects-dropdown">
-                <a href="/projects/calculate-central">Calculate Central</a>
-                <a href="/projects/GemGuidePro">GemGuidePro.com</a>
-                <a href="/projects/PuzzleZone">PuzzleZone</a>
-                <a href="/projects/UselessWeb">Useless Web</a>
-                <a href="/projects/epitaph">Digital Epitaphs</a>
-                <a href="/projects/emojitik">Tiktok Emojis</a>
-                <a href="/projects/techpulse">TechPulse</a>
-                <a href="/projects/flockfinder">flockfinder.online</a>
-              </div>
-            </div>{' '}
-            | <a href="/skills">Skills</a> | <a href="/blog">Blog</a> |{' '}
-            <a href="/about">About</a> | <a href="/contact">Contact</a>
+            <Logo />
+            <NavLinks />
+            <button
+              type="button"
+              className="nav-toggle"
+              aria-label="Open menu"
+            >
+              Menu
+            </button>
           </nav>
+          <NavMobileToggle />
         </header>
         <main>{children}</main>
-        <footer>
-          <small>© {new Date().getFullYear()} My Portfolio</small>
-        </footer>
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

@@ -1,76 +1,145 @@
-"use client";
+import type { Metadata } from 'next';
+import LocaleShell from '../../components/LocaleShell';
+import PersonJsonLd from '../../components/PersonJsonLd';
+import { ABOUT_CONTENT } from '../../lib/content';
 
-import { usePathname, useRouter } from 'next/navigation';
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'About Chen — an AI-empowered developer and data practitioner: trajectory from data analytics to shipping niche web products, plus the four working rules I try to keep.',
+  alternates: { canonical: 'https://www.aicoder.ink/about' },
+};
 
-export default function AboutPage() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const isZhRoute = pathname?.startsWith('/zh');
-  const locale: 'en' | 'zh' = isZhRoute ? 'zh' : 'en';
+const PERSON_LD = (
+  <PersonJsonLd
+    name="Chen"
+    jobTitle="AI-empowered developer & data practitioner"
+    url="https://www.aicoder.ink"
+    sameAs={['https://x.com/Chaifly', 'https://github.com/chaifly']}
+    knowsAbout={[
+      'AI development',
+      'Next.js',
+      'Keyword research',
+      'Civic transparency',
+      'Data modelling',
+      'Content-led products',
+    ]}
+  />
+);
 
-  const switchLocale = (nextLocale: 'en' | 'zh') => {
-    if (!pathname) return;
-    if (nextLocale === 'en') {
-      const newPath = pathname.startsWith('/zh') ? pathname.replace(/^\/zh/, '') || '/' : pathname;
-      router.push(newPath);
-    } else {
-      if (pathname.startsWith('/zh')) return;
-      const newPath = pathname === '/' ? '/zh' : `/zh${pathname}`;
-      router.push(newPath);
-    }
-  };
-
-  const personJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Chen',
-    jobTitle: locale === 'en' ? 'Full-Stack Developer / Data Professional' : 'AI开发者 / 数据从业者',
-    url: 'https://www.aicoder.ink',
-    sameAs: [
-      'https://x.com/Chaifly',
-    ],
-  };
-
-  const content =
-    locale === 'en'
-      ? {
-          title: 'About Me',
-        body:
-            "I&apos;m Chen, an AI-focused developer and data professional with experience across finance, telecom, local services and content safety. I started from data analysis and data modeling, working with Python, SQL and metric systems to support product and business decisions, and gradually moved into building web products such as Calculate Central, PuzzleZone, Useless Web, and more recently TechPulse (a keyword-research-driven Apple hardware site) and flockfinder.online (an independent public-records-backed ALPR transparency project). On this site I share both my technical work and how I think about product design, aiming to demonstrate solid E-E-A-T: real-world experience, technical expertise, a track record of shipping projects, and a transparent way of presenting my work.",
-      }
-      : {
-        title: '关于我',
-        body:
-            '你好，我是 Chen，一名偏向 AI 与数据方向的开发者与数据从业者，先后参与过金融、电信运营商、本地生活和内容安全等多个业务领域。职业起点是数据分析和数据建模，日常工作围绕 Python、SQL、指标体系与宽表建模，为产品和业务提供数据决策支持，并在此基础上逐步尝试把能力沉淀为在线产品，例如 Calculate Central 计算器工具集、PuzzleZone 小游戏站、Useless Web 实验项目，以及最近上线的、由关键词研究驱动立项的 Apple 硬件编辑站 TechPulse，和基于公开记录做的 ALPR 公民透明度项目 flockfinder.online。在这个站点里，我会尽量用清晰、可验证的方式呈现自己的项目和思考，以体现 E-E-A-T：真实经验、专业能力、可追溯的项目成果，以及对内容负责的态度。',
-      };
-
+function AboutEn() {
+  const c = ABOUT_CONTENT.en;
   return (
-    <>
-      <section>
-        <div className="lang-toggle" aria-label="Language switcher">
-          <button
-            type="button"
-            className={locale === 'en' ? 'active' : ''}
-            onClick={() => switchLocale('en')}
-          >
-            EN
-          </button>
-          <button
-            type="button"
-            className={locale === 'zh' ? 'active' : ''}
-            onClick={() => switchLocale('zh')}
-          >
-            中文
-          </button>
-        </div>
+    <section className="container about-page">
+      <header className="about-header">
+        <h1>{c.pageTitle}</h1>
+      </header>
 
-        <h1>{content.title}</h1>
-        <p>{content.body}</p>
-      </section>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-      />
-    </>
+      <div className="container-tight">
+        {c.introParagraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+
+      <div className="section-head" style={{ marginTop: '3rem' }}>
+        <span className="eyebrow">{c.timelineHeading}</span>
+        <p>{c.timelineIntro}</p>
+      </div>
+      <div className="container-tight">
+        <div className="timeline">
+          {c.timeline.map((entry) => (
+            <div key={entry.year} className="timeline-item">
+              <div className="timeline-year">{entry.year}</div>
+              <h3>{entry.title}</h3>
+              <p>{entry.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-head" style={{ marginTop: '3rem' }}>
+        <span className="eyebrow">{c.valuesHeading}</span>
+        <p>{c.valuesIntro}</p>
+      </div>
+      <div className="container-tight">
+        <div className="values-grid">
+          {c.values.map((v) => (
+            <div key={v.title} className="value-card">
+              <h3>{v.title}</h3>
+              <p>{v.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container-tight" style={{ marginTop: '2.5rem' }}>
+        <div className="section-head">
+          <h2>{c.closerHeading}</h2>
+          <p>{c.closerBody}</p>
+        </div>
+      </div>
+      {PERSON_LD}
+    </section>
   );
 }
+
+function AboutZh() {
+  const c = ABOUT_CONTENT.zh;
+  return (
+    <section className="container about-page">
+      <header className="about-header">
+        <h1>{c.pageTitle}</h1>
+      </header>
+
+      <div className="container-tight">
+        {c.introParagraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+
+      <div className="section-head" style={{ marginTop: '3rem' }}>
+        <span className="eyebrow">{c.timelineHeading}</span>
+        <p>{c.timelineIntro}</p>
+      </div>
+      <div className="container-tight">
+        <div className="timeline">
+          {c.timeline.map((entry) => (
+            <div key={entry.year} className="timeline-item">
+              <div className="timeline-year">{entry.year}</div>
+              <h3>{entry.title}</h3>
+              <p>{entry.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-head" style={{ marginTop: '3rem' }}>
+        <span className="eyebrow">{c.valuesHeading}</span>
+        <p>{c.valuesIntro}</p>
+      </div>
+      <div className="container-tight">
+        <div className="values-grid">
+          {c.values.map((v) => (
+            <div key={v.title} className="value-card">
+              <h3>{v.title}</h3>
+              <p>{v.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container-tight" style={{ marginTop: '2.5rem' }}>
+        <div className="section-head">
+          <h2>{c.closerHeading}</h2>
+          <p>{c.closerBody}</p>
+        </div>
+      </div>
+      {PERSON_LD}
+    </section>
+  );
+}
+
+export default function AboutPage() {
+  return <LocaleShell en={<AboutEn />} zh={<AboutZh />} />;
+}
+

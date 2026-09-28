@@ -1,107 +1,80 @@
-"use client";
+import type { Metadata } from 'next';
+import { BLOG_POSTS } from '../../lib/content';
 
-import { usePathname, useRouter } from 'next/navigation';
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Longer-form notes from Chen — process, research, and lessons from shipping niche products.',
+  alternates: { canonical: 'https://www.aicoder.ink/blog' },
+};
 
-const BLOG_POSTS = [
-  {
-    slug: 'first-blog',
-    titleEn: 'First Month Building Small Projects on My Personal Site',
-    titleZh: '个人网站创业尝试首月记',
-    summaryEn:
-      'A reflection on the first month of trying to ship one small project a week on my personal website, from zero experience to a clearer workflow.',
-    summaryZh:
-      '记录在个人网站上尝试一周一个小项目的首月经历，从完全生疏到逐渐摸清整个流程，以及目前为止的收获与困惑。',
-  },
-];
+function formatDate(iso: string, locale: 'en' | 'zh') {
+  const d = new Date(iso);
+  return d.toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
 
 export default function BlogIndexPage() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const isZhRoute = pathname?.startsWith('/zh');
-  const locale: 'en' | 'zh' = isZhRoute ? 'zh' : 'en';
-
-  const switchLocale = (nextLocale: 'en' | 'zh') => {
-    if (!pathname) return;
-    if (nextLocale === 'en') {
-      const newPath = pathname.startsWith('/zh') ? pathname.replace(/^\/zh/, '') || '/' : pathname;
-      router.push(newPath);
-    } else {
-      if (pathname.startsWith('/zh')) return;
-      const newPath = pathname === '/' ? '/zh' : `/zh${pathname}`;
-      router.push(newPath);
-    }
-  };
-
-  const projectsHref = isZhRoute ? '/zh/projects' : '/projects';
-  const blogIndexHref = isZhRoute ? '/zh/blog' : '/blog';
-
-  const content =
-    locale === 'en'
-      ? {
-          pageTitle: 'Blog',
-          pageIntro:
-            'Longer-form notes about my journey building small products on this personal site, including experiments, lessons learned and future plans.',
-        }
-      : {
-          pageTitle: 'Blog 文章',
-          pageIntro:
-            '记录在这个个人网站上做小项目过程中的一些思考，包括尝试、踩坑、复盘和后续规划。',
-        };
+  // Bilingual index: render the locale-aware slug route via JS only on click.
+  // For SEO + SSG, the page itself shows both languages (en list + zh list).
+  const sorted = [...BLOG_POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
-    <section className="blog-page">
+    <section className="container blog-page">
       <div className="lang-toggle" aria-label="Language switcher">
-        <button
-          type="button"
-          className={locale === 'en' ? 'active' : ''}
-          onClick={() => switchLocale('en')}
-        >
+        <a href="/blog" className="active" aria-current="page">
           EN
-        </button>
-        <button
-          type="button"
-          className={locale === 'zh' ? 'active' : ''}
-          onClick={() => switchLocale('zh')}
-        >
-          中文
-        </button>
+        </a>
+        <a href="/zh/blog">中文</a>
       </div>
 
       <header className="blog-header">
-        <h1>{content.pageTitle}</h1>
-        <p>{content.pageIntro}</p>
+        <span className="eyebrow">Blog</span>
+        <h1>Notes from the shipping log</h1>
+        <p>
+          Longer-form notes on the projects I’m running: process, research,
+          data and lessons from shipping one product a week.
+        </p>
       </header>
 
       <div className="blog-layout">
         <div className="blog-main">
-          {BLOG_POSTS.map((post) => (
+          {sorted.map((post) => (
             <article key={post.slug} className="blog-card">
+              <div className="blog-meta">
+                <time dateTime={post.date}>{formatDate(post.date, 'en')}</time>
+                <span className="blog-meta-dot" />
+                <span>{post.readingMinutes} min read</span>
+              </div>
               <h2>
-                <a href={`${blogIndexHref}/${post.slug}`}>
-                  {locale === 'en' ? post.titleEn : post.titleZh}
-                </a>
+                <a href={`/blog/${post.slug}`}>{post.titleEn}</a>
               </h2>
-              <p>{locale === 'en' ? post.summaryEn : post.summaryZh}</p>
+              <p>{post.summaryEn}</p>
+              <div className="project-card-meta" style={{ marginTop: '0.65rem' }}>
+                {post.tagsEn.map((t, i) => (
+                  <span key={t}>
+                    {i > 0 && <span className="project-card-meta-dot" />}#{t}
+                  </span>
+                ))}
+              </div>
             </article>
           ))}
         </div>
 
         <aside className="blog-sidebar">
-          <h2>{locale === 'en' ? 'Navigation' : '导航'}</h2>
+          <h2>{'Navigation'}</h2>
           <ul>
-            <li>
-              <a href={projectsHref}>
-                {locale === 'en' ? 'Projects overview' : '前往项目介绍页'}
-              </a>
-            </li>
-            <li>
-              <a href={blogIndexHref}>
-                {locale === 'en' ? 'All blog posts' : '所有 Blog 文章'}
-              </a>
-            </li>
+            <li><a href="/projects">{'Projects overview'}</a></li>
+            <li><a href="/skills">{'Skills & experience'}</a></li>
+            <li><a href="/about">{'About me'}</a></li>
+            <li><a href="/contact">{'Contact'}</a></li>
           </ul>
         </aside>
       </div>
     </section>
   );
 }
+

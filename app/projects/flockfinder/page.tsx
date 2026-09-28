@@ -1,4 +1,7 @@
 import ProjectDetail from '../../../components/ProjectDetail';
+import { PROJECTS } from '../../../lib/projects';
+
+const flockfinder = PROJECTS.find((p) => p.slug === 'flockfinder')!;
 
 export default function FlockfinderPage() {
   return (
@@ -6,6 +9,8 @@ export default function FlockfinderPage() {
       currentSlug="flockfinder"
       externalUrl="https://flockfinder.online/"
       externalLabel="Visit flockfinder.online ↗"
+      meta={flockfinder.stats}
+      stack={flockfinder.stack}
       en={{
         title: 'flockfinder.online - A Public-Records-Backed ALPR Transparency Site',
         sections: [
@@ -151,4 +156,3 @@ export default function FlockfinderPage() {
     />
   );
 }
-

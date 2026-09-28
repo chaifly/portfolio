@@ -1,4 +1,7 @@
 import ProjectDetail from '../../../components/ProjectDetail';
+import { PROJECTS } from '../../../lib/projects';
+
+const techpulse = PROJECTS.find((p) => p.slug === 'techpulse')!;
 
 export default function TechPulsePage() {
   return (
@@ -6,6 +9,8 @@ export default function TechPulsePage() {
       currentSlug="techpulse"
       externalUrl="https://techpulse.press/"
       externalLabel="Visit TechPulse.press ↗"
+      meta={techpulse.stats}
+      stack={techpulse.stack}
       en={{
         title: 'TechPulse - A Keyword-Research-Backed Apple Hardware Site',
         sections: [
@@ -169,3 +174,4 @@ export default function TechPulsePage() {
     />
   );
 }
+

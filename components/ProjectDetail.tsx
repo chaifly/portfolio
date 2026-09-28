@@ -1,4 +1,9 @@
-"use client";
+// ProjectDetail is a small composition shell: it lays out the locale toggle,
+// title (with optional live badge), optional stats strip + tech chips above the
+// rich content, then the rich content itself, then the closing CTA and an
+// "Other projects" rail.
+
+'use client';
 
 import type { ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -112,6 +117,8 @@ export type ProjectDetailProps = {
   currentSlug?: string;
   externalUrl?: string;
   externalLabel?: string;
+  meta?: { label: string; value: string }[];
+  stack?: string[];
 };
 
 export default function ProjectDetail({
@@ -120,6 +127,8 @@ export default function ProjectDetail({
   currentSlug,
   externalUrl,
   externalLabel,
+  meta,
+  stack,
 }: ProjectDetailProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -176,6 +185,27 @@ export default function ProjectDetail({
           </a>
         )}
       </h1>
+
+      {meta && meta.length > 0 && (
+        <div className="project-meta-stats" aria-label={locale === 'en' ? 'Project stats' : '项目数据'}>
+          {meta.map((row) => (
+            <div key={row.label} className="project-meta-stats-row">
+              <span className="project-meta-stats-value">{row.value}</span>
+              <span className="project-meta-stats-label">{row.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {stack && stack.length > 0 && (
+        <div className="project-stack" aria-label={locale === 'en' ? 'Tech stack' : '技术栈'}>
+          {stack.map((tech) => (
+            <span key={tech} className="badge">
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
 
       {content.sections.map((section) => (
         <section key={section.heading}>
