@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Linkify from '../../../components/Linkify';
 import { BLOG_POSTS, getBlogPost } from '../../../lib/content';
 
 type Params = { slug: string };
@@ -37,7 +38,7 @@ export default function BlogPostPage({ params }: { params: Params }) {
         </div>
         <h1>{post.titleEn}</h1>
         <p style={{ fontSize: '1.1rem', color: 'var(--ink-3)' }}>
-          {post.summaryEn}
+          <Linkify text={post.summaryEn} />
         </p>
         <div className="project-card-meta" style={{ margin: '0 0 1.5rem' }}>
           {post.tagsEn.map((t, i) => (
@@ -47,10 +48,11 @@ export default function BlogPostPage({ params }: { params: Params }) {
           ))}
         </div>
         {post.bodyEn.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>
+            <Linkify text={p} />
+          </p>
         ))}
       </div>
     </article>
   );
 }
-

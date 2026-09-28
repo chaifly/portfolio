@@ -43,14 +43,20 @@ export default function BlogIndexPage() {
       <div className="blog-layout">
         <div className="blog-main">
           {sorted.map((post) => (
-            <article key={post.slug} className="blog-card">
+            <article key={post.slug} className="blog-card blog-card-clickable">
               <div className="blog-meta">
                 <time dateTime={post.date}>{formatDate(post.date, 'en')}</time>
                 <span className="blog-meta-dot" />
                 <span>{post.readingMinutes} min read</span>
               </div>
               <h2>
-                <a href={`/blog/${post.slug}`}>{post.titleEn}</a>
+                <a
+                  href={`/blog/${post.slug}`}
+                  className="blog-card-title-link"
+                  aria-label={`Read “${post.titleEn}”`}
+                >
+                  {post.titleEn}
+                </a>
               </h2>
               <p>{post.summaryEn}</p>
               <div className="project-card-meta" style={{ marginTop: '0.65rem' }}>
@@ -77,4 +83,3 @@ export default function BlogIndexPage() {
     </section>
   );
 }
-

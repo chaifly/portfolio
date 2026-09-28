@@ -40,14 +40,20 @@ export default function BlogIndexZhPage() {
       <div className="blog-layout">
         <div className="blog-main">
           {sorted.map((post) => (
-            <article key={post.slug} className="blog-card">
+            <article key={post.slug} className="blog-card blog-card-clickable">
               <div className="blog-meta">
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
                 <span className="blog-meta-dot" />
                 <span>{post.readingMinutes} 分钟阅读</span>
               </div>
               <h2>
-                <a href={`/zh/blog/${post.slug}`}>{post.titleZh}</a>
+                <a
+                  href={`/zh/blog/${post.slug}`}
+                  className="blog-card-title-link"
+                  aria-label={`阅读《${post.titleZh}》`}
+                >
+                  {post.titleZh}
+                </a>
               </h2>
               <p>{post.summaryZh}</p>
               <div className="project-card-meta" style={{ marginTop: '0.65rem' }}>
@@ -74,4 +80,3 @@ export default function BlogIndexZhPage() {
     </section>
   );
 }
-

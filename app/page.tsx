@@ -1,12 +1,31 @@
 import LocaleShell from '../components/LocaleShell';
 import PersonJsonLd from '../components/PersonJsonLd';
+import Linkify from '../components/Linkify';
 import { HOME_CONTENT } from '../lib/content';
-import { PROJECTS, CATEGORY_LABEL_EN, CATEGORY_LABEL_ZH } from '../lib/projects';
+import { PROJECTS, CATEGORY_LABEL_EN, CATEGORY_LABEL_ZH, buildProjectLinkifyTokens } from '../lib/projects';
 
 function StatusPill({ status }: { status: 'live' | 'shipped' | 'sunset' }) {
   const cls = status === 'live' ? 'badge badge-live' : 'badge';
   const label = status === 'live' ? 'Live' : status === 'shipped' ? 'Shipped' : 'Sunset';
   return <span className={cls}>{label}</span>;
+}
+
+// Splits strings like "Currently building · TechPulse" so the part after
+// " · " becomes a clickable link (using the auto token list). If there's no
+// separator, the eyebrow is rendered as plain text.
+function renderFeaturedEyebrow(eyebrow: string) {
+  const sep = ' · ';
+  const idx = eyebrow.lastIndexOf(sep);
+  if (idx === -1) return eyebrow;
+  const head = eyebrow.slice(0, idx);
+  const tail = eyebrow.slice(idx + sep.length);
+  return (
+    <>
+      {head}
+      {sep}
+      <Linkify text={tail} tokens={buildProjectLinkifyTokens()} />
+    </>
+  );
 }
 
 function HomeHero({ eyebrow }: { eyebrow: string }) {
@@ -37,6 +56,47 @@ function HomeHero({ eyebrow }: { eyebrow: string }) {
   );
 }
 
+function HomeProjectsGrid({ locale }: { locale: 'en' | 'zh' }) {
+  const catLabel = locale === 'en' ? CATEGORY_LABEL_EN : CATEGORY_LABEL_ZH;
+  return (
+    <div className="home-projects-grid">
+      {PROJECTS.map((p) => (
+        <article key={p.slug} className="project-card project-card-clickable">
+          <div className="project-card-meta">
+            <span>{catLabel[p.category]}</span>
+            <span className="project-card-meta-dot" />
+            <span>Since {p.since}</span>
+          </div>
+          <h3>
+            <a
+              href={`/projects/${p.slug}`}
+              className="project-card-title-link"
+              aria-label={locale === 'en' ? `Open ${p.name} case study` : `打开 ${p.name} 项目详情`}
+            >
+              {p.name}
+            </a>
+          </h3>
+          <p>{p.pitch}</p>
+          <div className="project-links">
+            {p.externalUrl ? (
+              <a
+                href={p.externalUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="project-link-external"
+                aria-label={locale === 'en' ? `Open ${p.name} live site (new tab)` : `打开 ${p.name} 线上站点（新窗口）`}
+              >
+                {p.externalLabel ?? (locale === 'en' ? 'Open live' : '打开线上')}
+              </a>
+            ) : null}
+            <StatusPill status={p.status} />
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function HomeBody() {
   const c = HOME_CONTENT.en;
   return (
@@ -51,7 +111,9 @@ function HomeBody() {
               {c.heroTitleSuffix}
             </h1>
             <p className="hero-subtitle">{c.heroSubtitle}</p>
-            <p className="hero-intro">{c.heroIntro}</p>
+            <p className="hero-intro">
+              <Linkify text={c.heroIntro} />
+            </p>
             <div className="hero-actions">
               <a className="button button-primary" href={c.primaryCta.href}>
                 {c.primaryCta.label}
@@ -82,9 +144,13 @@ function HomeBody() {
         <div className="container">
           <article className="home-featured">
             <div>
-              <div className="home-featured-eyebrow">{c.featuredEyebrow}</div>
+              <div className="home-featured-eyebrow">
+                {renderFeaturedEyebrow(c.featuredEyebrow)}
+              </div>
               <h2 className="home-featured-title">{c.featuredTitle}</h2>
-              <p className="home-featured-body">{c.featuredBody}</p>
+              <p className="home-featured-body">
+                <Linkify text={c.featuredBody} />
+              </p>
               <div className="home-featured-actions">
                 <a className="button button-accent" href={c.featuredPrimary.href}>
                   {c.featuredPrimary.label}
@@ -118,28 +184,7 @@ function HomeBody() {
           <div className="section-head">
             <span className="eyebrow">{c.projectsHeading}</span>
           </div>
-          <div className="home-projects-grid">
-            {PROJECTS.map((p) => (
-              <article key={p.slug} className="project-card">
-                <div className="project-card-meta">
-                  <span>{CATEGORY_LABEL_EN[p.category]}</span>
-                  <span className="project-card-meta-dot" />
-                  <span>Since {p.since}</span>
-                </div>
-                <h3>{p.name}</h3>
-                <p>{p.pitch}</p>
-                <div className="project-links">
-                  <a href={`/projects/${p.slug}`}>Details</a>
-                  {p.externalUrl ? (
-                    <a href={p.externalUrl} target="_blank" rel="noreferrer">
-                      {p.externalLabel ?? 'Open live'}
-                    </a>
-                  ) : null}
-                  <StatusPill status={p.status} />
-                </div>
-              </article>
-            ))}
-          </div>
+          <HomeProjectsGrid locale="en" />
         </div>
       </section>
 
@@ -147,7 +192,9 @@ function HomeBody() {
         <div className="container">
           <div className="section-head">
             <h2>{c.aboutHeading}</h2>
-            <p>{c.aboutBody}</p>
+            <p>
+              <Linkify text={c.aboutBody} />
+            </p>
           </div>
           <a className="button button-secondary" href={c.aboutCta.href}>
             {c.aboutCta.label} →
@@ -187,7 +234,9 @@ function HomeBodyZh() {
               {c.heroTitleSuffix}
             </h1>
             <p className="hero-subtitle">{c.heroSubtitle}</p>
-            <p className="hero-intro">{c.heroIntro}</p>
+            <p className="hero-intro">
+              <Linkify text={c.heroIntro} />
+            </p>
             <div className="hero-actions">
               <a className="button button-primary" href={c.primaryCta.href}>
                 {c.primaryCta.label}
@@ -218,9 +267,13 @@ function HomeBodyZh() {
         <div className="container">
           <article className="home-featured">
             <div>
-              <div className="home-featured-eyebrow">{c.featuredEyebrow}</div>
+              <div className="home-featured-eyebrow">
+                {renderFeaturedEyebrow(c.featuredEyebrow)}
+              </div>
               <h2 className="home-featured-title">{c.featuredTitle}</h2>
-              <p className="home-featured-body">{c.featuredBody}</p>
+              <p className="home-featured-body">
+                <Linkify text={c.featuredBody} />
+              </p>
               <div className="home-featured-actions">
                 <a className="button button-accent" href={c.featuredPrimary.href}>
                   {c.featuredPrimary.label}
@@ -254,28 +307,7 @@ function HomeBodyZh() {
           <div className="section-head">
             <span className="eyebrow">{c.projectsHeading}</span>
           </div>
-          <div className="home-projects-grid">
-            {PROJECTS.map((p) => (
-              <article key={p.slug} className="project-card">
-                <div className="project-card-meta">
-                  <span>{CATEGORY_LABEL_ZH[p.category]}</span>
-                  <span className="project-card-meta-dot" />
-                  <span>Since {p.since}</span>
-                </div>
-                <h3>{p.name}</h3>
-                <p>{p.pitch}</p>
-                <div className="project-links">
-                  <a href={`/projects/${p.slug}`}>\u8be6\u60c5</a>
-                  {p.externalUrl ? (
-                    <a href={p.externalUrl} target="_blank" rel="noreferrer">
-                      {p.externalLabel ?? '\u6253\u5f00\u7ebf\u4e0a'}
-                    </a>
-                  ) : null}
-                  <StatusPill status={p.status} />
-                </div>
-              </article>
-            ))}
-          </div>
+          <HomeProjectsGrid locale="zh" />
         </div>
       </section>
 
@@ -283,7 +315,9 @@ function HomeBodyZh() {
         <div className="container">
           <div className="section-head">
             <h2>{c.aboutHeading}</h2>
-            <p>{c.aboutBody}</p>
+            <p>
+              <Linkify text={c.aboutBody} />
+            </p>
           </div>
           <a className="button button-secondary" href={c.aboutCta.href}>
             {c.aboutCta.label} →
@@ -299,4 +333,3 @@ export default function HomePage() {
     <LocaleShell en={<HomeBody />} zh={<HomeBodyZh />} />
   );
 }
-

@@ -7,6 +7,8 @@
 
 import type { ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import Linkify from './Linkify';
+import { buildProjectLinkifyTokens } from '../lib/projects';
 
 export type ProjectDetailContent = {
   title: string;
@@ -71,7 +73,15 @@ const OTHER_PROJECTS = [
   },
 ];
 
+// Renders a paragraph with two layers of substitution:
+//   1. Special-case patterns ([cry] emoji code, Emojitik.com mention) —
+//      short, hand-rolled splitters for the things that don't fit the
+//      generic project-name auto-link rules.
+//   2. Generic auto-linking of any project name or bare domain via
+//      <Linkify />, so "TechPulse", "techpulse.press", "GemGuidePro", etc.
+//      all become clickable links in the prose without per-paragraph edits.
 function renderRichParagraph(text: string): ReactNode {
+  const tokens = buildProjectLinkifyTokens();
   const parts = text.split(/(Emojitik\.com|\[cry\])/);
 
   return parts.map((part, index) => {
@@ -103,11 +113,7 @@ function renderRichParagraph(text: string): ReactNode {
 
     if (!part) return null;
 
-    return (
-      <span key={`text-${index}`}>
-        {part}
-      </span>
-    );
+    return <Linkify key={`text-${index}`} text={part} tokens={tokens} />;
   });
 }
 
@@ -152,6 +158,7 @@ export default function ProjectDetail({
   const otherProjects = OTHER_PROJECTS.filter(
     (project) => !currentSlug || project.slug !== currentSlug,
   );
+  const tokens = buildProjectLinkifyTokens();
 
   return (
     <section>
@@ -216,7 +223,9 @@ export default function ProjectDetail({
           {section.listItems && section.listItems.length > 0 && (
             <ul>
               {section.listItems.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <Linkify text={item} tokens={tokens} />
+                </li>
               ))}
             </ul>
           )}
@@ -225,7 +234,7 @@ export default function ProjectDetail({
 
       <section>
         <p>
-          {content.cta.prefix}
+          <Linkify text={content.cta.prefix} tokens={tokens} />
           <a href={content.cta.href} target="_blank" rel="noreferrer">
             {content.cta.text}
           </a>
@@ -233,20 +242,26 @@ export default function ProjectDetail({
         </p>
       </section>
 
-      {otherProjects.length > 0 && (
-        <section>
-          <h2>{locale === 'en' ? 'Other projects' : '其它项目'}</h2>
-          <ul>
-            {otherProjects.map((project) => (
-              <li key={project.slug}>
-                <a href={project.href}>
-                  {locale === 'en' ? project.labelEn : project.labelZh}
-                </a>
-              </li>
-            ))}
-          </ul>
+      {liveUrl && (
+        <section className="project-cta">
+          <a className="button button-primary" href={liveUrl} target="_blank" rel="noreferrer">
+            {liveLabel ?? (locale === 'en' ? 'Visit live site ↗' : '访问线上站点 ↗')}
+          </a>
         </section>
       )}
+
+      <section>
+        <h2>{locale === 'en' ? 'Other projects' : '其他项目'}</h2>
+        <ul className="project-other-rail">
+          {otherProjects.map((project) => (
+            <li key={project.slug}>
+              <a href={project.href}>
+                {locale === 'en' ? project.labelEn : project.labelZh}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </section>
   );
 }

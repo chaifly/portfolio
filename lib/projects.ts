@@ -3,6 +3,8 @@
  * /projects index, project detail pages, and the JSON-LD/nav references.
  */
 
+import type { LinkifyToken } from '../components/Linkify';
+
 export type ProjectCategory =
   | 'editorial'
   | 'civic'
@@ -169,6 +171,32 @@ export function projectBySlug(slug: string): ProjectMeta | undefined {
   return PROJECTS.find((p) => p.slug === slug);
 }
 
+/**
+ * Build the default Linkify token list from PROJECTS so any prose mention
+ * of a project name (e.g. "TechPulse") or its bare domain (e.g. "techpulse.press")
+ * becomes a clickable link back to the right place.
+ */
+export function buildProjectLinkifyTokens(): LinkifyToken[] {
+  const tokens: LinkifyToken[] = [];
+  for (const p of PROJECTS) {
+    tokens.push({ match: p.name, href: `/projects/${p.slug}` });
+    if (p.externalUrl) {
+      try {
+        const u = new URL(p.externalUrl);
+        const host = u.host.replace(/^www\./, '');
+        if (host && host !== p.name) {
+          tokens.push({ match: host, href: p.externalUrl, external: true });
+        }
+      } catch {
+        // ignore: no token added if the externalUrl is malformed.
+      }
+    }
+  }
+  // Site-wide mentions: aicoder.ink should also be a link home.
+  tokens.push({ match: 'aicoder.ink', href: '/' });
+  return tokens;
+}
+
 export const CATEGORY_LABEL_EN: Record<ProjectCategory, string> = {
   editorial: 'Editorial',
   civic: 'Civic transparency',
@@ -198,4 +226,3 @@ export const STATUS_LABEL_ZH: Record<ProjectStatus, string> = {
   shipped: '已上线',
   sunset: '已归档',
 };
-

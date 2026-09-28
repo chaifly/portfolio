@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Linkify from '../../../../components/Linkify';
 import { BLOG_POSTS, getBlogPost } from '../../../../lib/content';
 
 type Params = { slug: string };
@@ -16,7 +17,7 @@ function formatDate(iso: string, locale: 'en' | 'zh') {
   });
 }
 
-export default function BlogPostZhPage({ params }: { params: Params }) {
+export default function BlogPostPage({ params }: { params: Params }) {
   const post = getBlogPost(params.slug);
   if (!post) notFound();
 
@@ -24,11 +25,7 @@ export default function BlogPostZhPage({ params }: { params: Params }) {
     <article className="container blog-page">
       <div className="lang-toggle" aria-label="Language switcher">
         <a href={`/blog/${post.slug}`}>EN</a>
-        <a
-          href={`/zh/blog/${post.slug}`}
-          className="active"
-          aria-current="page"
-        >
+        <a href={`/zh/blog/${post.slug}`} className="active" aria-current="page">
           中文
         </a>
       </div>
@@ -41,7 +38,7 @@ export default function BlogPostZhPage({ params }: { params: Params }) {
         </div>
         <h1>{post.titleZh}</h1>
         <p style={{ fontSize: '1.1rem', color: 'var(--ink-3)' }}>
-          {post.summaryZh}
+          <Linkify text={post.summaryZh} />
         </p>
         <div className="project-card-meta" style={{ margin: '0 0 1.5rem' }}>
           {post.tagsZh.map((t, i) => (
@@ -51,10 +48,11 @@ export default function BlogPostZhPage({ params }: { params: Params }) {
           ))}
         </div>
         {post.bodyZh.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>
+            <Linkify text={p} />
+          </p>
         ))}
       </div>
     </article>
   );
 }
-

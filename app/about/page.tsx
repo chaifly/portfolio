@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import LocaleShell from '../../components/LocaleShell';
 import PersonJsonLd from '../../components/PersonJsonLd';
+import Linkify from '../../components/Linkify';
 import { ABOUT_CONTENT } from '../../lib/content';
 
 export const metadata: Metadata = {
@@ -37,7 +38,9 @@ function AboutEn() {
 
       <div className="container-tight">
         {c.introParagraphs.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>
+            <Linkify text={p} />
+          </p>
         ))}
       </div>
 
@@ -51,7 +54,9 @@ function AboutEn() {
             <div key={entry.year} className="timeline-item">
               <div className="timeline-year">{entry.year}</div>
               <h3>{entry.title}</h3>
-              <p>{entry.body}</p>
+              <p>
+                <Linkify text={entry.body} />
+              </p>
             </div>
           ))}
         </div>
@@ -93,7 +98,9 @@ function AboutZh() {
 
       <div className="container-tight">
         {c.introParagraphs.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>
+            <Linkify text={p} />
+          </p>
         ))}
       </div>
 
@@ -107,7 +114,9 @@ function AboutZh() {
             <div key={entry.year} className="timeline-item">
               <div className="timeline-year">{entry.year}</div>
               <h3>{entry.title}</h3>
-              <p>{entry.body}</p>
+              <p>
+                <Linkify text={entry.body} />
+              </p>
             </div>
           ))}
         </div>
@@ -142,4 +151,3 @@ function AboutZh() {
 export default function AboutPage() {
   return <LocaleShell en={<AboutEn />} zh={<AboutZh />} />;
 }
-
