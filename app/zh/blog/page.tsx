@@ -22,13 +22,6 @@ export default function BlogIndexZhPage() {
 
   return (
     <section className="container blog-page">
-      <div className="lang-toggle" aria-label="Language switcher">
-        <a href="/blog">EN</a>
-        <a href="/zh/blog" className="active" aria-current="page">
-          中文
-        </a>
-      </div>
-
       <header className="blog-header">
         <span className="eyebrow">博客</span>
         <h1>上线日志里的复盘</h1>

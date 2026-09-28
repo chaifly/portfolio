@@ -99,6 +99,10 @@ code, kbd, samp {
 
 main { display: block; }
 
+/* Soft horizontal padding so layouts that don't wrap themselves in
+   .container don't bleed to the edges on narrow viewports. */
+main { padding-inline: clamp(1rem, 2.5vw, 1.75rem); }
+
 ::selection { background: var(--accent-soft); color: var(--accent-strong); }
 
 /* ===== Layout primitives ===== */
@@ -330,6 +334,36 @@ main { display: block; }
 .hero-card-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
 .hero-card-name { font-weight: 600; color: var(--ink-1); }
 .hero-card-meta { font-size: 0.85rem; color: var(--ink-3); }
+
+/* When a hero-card-row is rendered as an <a>, make it feel clickable while
+   keeping the visual rhythm of the surrounding rows. */
+a.hero-card-row-link {
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--r-md);
+  padding: 0.35rem 0.55rem;
+  margin: -0.35rem -0.55rem 0;
+  transition: background-color 0.16s ease, transform 0.16s ease;
+  position: relative;
+}
+a.hero-card-row-link:hover {
+  background: var(--bg-tinted);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+a.hero-card-row-link:hover .hero-card-name { color: var(--accent-strong); }
+a.hero-card-row-link::after {
+  content: '\2197'; /* ↗ */
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  color: var(--accent);
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+a.hero-card-row-link:hover::after { opacity: 1; transform: translateY(-50%) translateX(2px); }
 
 /* ===== Buttons ===== */
 
@@ -564,6 +598,29 @@ a.linkified-mention:hover {
 
 /* ===== Project detail page ===== */
 
+.project-detail-page {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+.project-detail-page h1 {
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  margin-bottom: 1.75rem;
+}
+.project-detail-page h1 + .project-meta-stats,
+.project-detail-page h1 + .project-stack,
+.project-detail-page h1 + section {
+  margin-top: 1.5rem;
+}
+.project-detail-page section {
+  margin-block: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+.project-detail-page section h2 {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  margin-bottom: 0.85rem;
+}
+.project-detail-page p,
+.project-detail-page li { line-height: 1.7; }
+.project-detail-page ul { padding-left: 1.4rem; }
+
 .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1.5rem; }
 .project-meta-stats {
   display: grid;
@@ -743,28 +800,34 @@ a.linkified-mention:hover {
 
 /* ===== Language toggle ===== */
 
-.lang-toggle {
+.lang-switch {
   display: inline-flex;
-  gap: 0.25rem;
-  padding: 0.18rem;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
   background: var(--bg-tinted);
   border: 1px solid var(--line);
   border-radius: var(--r-pill);
-  margin-bottom: 1rem;
-}
-.lang-toggle button {
-  padding: 0.3rem 0.85rem;
-  border-radius: var(--r-pill);
-  border: 1px solid transparent;
-  background: transparent;
-  cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--ink-3);
-  transition: background-color 0.16s, color 0.16s, border-color 0.16s;
 }
-.lang-toggle button:hover { color: var(--ink-1); }
-.lang-toggle button.active { background: var(--surface); color: var(--ink-1); border-color: var(--line); box-shadow: var(--shadow-1); }
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--r-pill);
+  color: var(--ink-3);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: background-color 0.16s, color 0.16s;
+}
+.lang-switch a:hover { color: var(--ink-1); }
+.lang-switch a.is-active {
+  background: var(--surface);
+  color: var(--ink-1);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
 
 /* ===== Logo ===== */
 

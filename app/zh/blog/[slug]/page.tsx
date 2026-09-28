@@ -23,13 +23,6 @@ export default function BlogPostPage({ params }: { params: Params }) {
 
   return (
     <article className="container blog-page">
-      <div className="lang-toggle" aria-label="Language switcher">
-        <a href={`/blog/${post.slug}`}>EN</a>
-        <a href={`/zh/blog/${post.slug}`} className="active" aria-current="page">
-          中文
-        </a>
-      </div>
-
       <div className="blog-main">
         <div className="blog-meta">
           <time dateTime={post.date}>{formatDate(post.date, 'zh')}</time>

@@ -6,7 +6,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Linkify from './Linkify';
 import { buildProjectLinkifyTokens } from '../lib/projects';
 
@@ -136,22 +136,10 @@ export default function ProjectDetail({
   meta,
   stack,
 }: ProjectDetailProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const isZhRoute = pathname?.startsWith('/zh');
   const locale: 'en' | 'zh' = isZhRoute ? 'zh' : 'en';
 
-  const switchLocale = (nextLocale: 'en' | 'zh') => {
-    if (!pathname) return;
-    if (nextLocale === 'en') {
-      const newPath = pathname.startsWith('/zh') ? pathname.replace(/^\/zh/, '') || '/' : pathname;
-      router.push(newPath);
-    } else {
-      if (pathname.startsWith('/zh')) return;
-      const newPath = pathname === '/' ? '/zh' : `/zh${pathname}`;
-      router.push(newPath);
-    }
-  };
   const content = locale === 'en' ? en : zh;
   const liveUrl = content.external?.href ?? externalUrl;
   const liveLabel = content.external?.label ?? externalLabel;
@@ -161,23 +149,7 @@ export default function ProjectDetail({
   const tokens = buildProjectLinkifyTokens();
 
   return (
-    <section>
-      <div className="lang-toggle" aria-label="Language switcher">
-        <button
-          type="button"
-          className={locale === 'en' ? 'active' : ''}
-          onClick={() => switchLocale('en')}
-        >
-          EN
-        </button>
-        <button
-          type="button"
-          className={locale === 'zh' ? 'active' : ''}
-          onClick={() => switchLocale('zh')}
-        >
-          中文
-        </button>
-      </div>
+    <section className="container container-tight project-detail-page">
 
       <h1>
         {content.title}

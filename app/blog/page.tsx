@@ -24,13 +24,6 @@ export default function BlogIndexPage() {
 
   return (
     <section className="container blog-page">
-      <div className="lang-toggle" aria-label="Language switcher">
-        <a href="/blog" className="active" aria-current="page">
-          EN
-        </a>
-        <a href="/zh/blog">中文</a>
-      </div>
-
       <header className="blog-header">
         <span className="eyebrow">Blog</span>
         <h1>Notes from the shipping log</h1>

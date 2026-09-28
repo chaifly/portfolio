@@ -30,28 +30,43 @@ function renderFeaturedEyebrow(eyebrow: string) {
 
 function HomeHero({ eyebrow }: { eyebrow: string }) {
   return (
-    <div className="hero-card" aria-hidden="true">
-      <div className="hero-card-row">
+    <div className="hero-card">
+      <a
+        className="hero-card-row hero-card-row-link"
+        href="https://techpulse.press/"
+        target="_blank"
+        rel="noreferrer"
+      >
         <div>
           <div className="hero-card-label">Live</div>
           <div className="hero-card-name">TechPulse</div>
         </div>
         <span className="badge badge-live">iPhone 18</span>
-      </div>
-      <div className="hero-card-row">
+      </a>
+      <a
+        className="hero-card-row hero-card-row-link"
+        href="https://flockfinder.online/"
+        target="_blank"
+        rel="noreferrer"
+      >
         <div>
           <div className="hero-card-label">Live</div>
           <div className="hero-card-name">flockfinder.online</div>
         </div>
         <span className="badge">ALPR</span>
-      </div>
-      <div className="hero-card-row">
+      </a>
+      <a
+        className="hero-card-row hero-card-row-link"
+        href="https://emojitik.com/"
+        target="_blank"
+        rel="noreferrer"
+      >
         <div>
           <div className="hero-card-label">Live</div>
-          <div className="hero-card-name">GemGuidePro</div>
+          <div className="hero-card-name">Emojitik</div>
         </div>
         <span className="badge">{eyebrow}</span>
-      </div>
+      </a>
     </div>
   );
 }

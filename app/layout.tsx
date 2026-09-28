@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 import Logo from '../components/Logo';
+import HeaderLangSwitch from '../components/HeaderLangSwitch';
 import { PROJECTS } from '../lib/projects';
 import './globals.css';
 
@@ -150,6 +151,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <nav className="main-nav">
             <Logo />
             <NavLinks />
+            <HeaderLangSwitch />
             <button
               type="button"
               className="nav-toggle"
